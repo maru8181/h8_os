@@ -1,0 +1,11 @@
+/bin/
+/etc/
+/home/
+/include/
+/lib/
+/sbin/
+/tmp/
+/usr/
+/var/
+cygwin.*
+setup.*
