@@ -1,5 +1,5 @@
-PREFIX  = /usr/local
-ARCH    = h8300-elf
+PREFIX  = /usr
+ARCH    = h8300-hms
 BINDIR  = $(PREFIX)/bin
 ADDNAME = $(ARCH)-
 
@@ -40,6 +40,7 @@ all :		$(TARGET)
 
 $(TARGET) :	$(OBJS)
 		$(CC) $(OBJS) -o $(TARGET) $(CFLAGS) $(LFLAGS)
+		mv $(TARGET).exe $(TARGET)
 		cp $(TARGET) $(TARGET).elf
 		$(STRIP) $(TARGET)
 
