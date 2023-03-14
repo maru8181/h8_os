@@ -4,12 +4,16 @@
 
 int main(void)
 {
-  serial_init(SERIAL_DEFAULT_DEVICE);
+  serial_init(SERIAL_DEFAULT_DEVICE); /* シリアル・デバイスの初期化 */
 
-  puts("Hello World!\n");
+  puts("Hello world!\n");
 
-  while (1)
-	;
+  putxval(0x10, 0);   puts("\n");
+  putxval(0xffff, 0); puts("\n");
+
+  while(1)                            /* 停止 */
+    ;
 
   return 0;
 }
+
