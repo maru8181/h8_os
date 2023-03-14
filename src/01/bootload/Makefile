@@ -41,7 +41,7 @@ all :		$(TARGET)
 $(TARGET) :	$(OBJS)
 		$(CC) $(OBJS) -o $(TARGET) $(CFLAGS) $(LFLAGS)
 		mv $(TARGET).exe $(TARGET)
-		cp $(TARGET) $(TARGET).elf
+		cp $(TARGET) $(TARGET).coff
 		$(STRIP) $(TARGET)
 
 .c.o :		$<
@@ -59,4 +59,4 @@ write :		$(TARGET).mot
 		$(H8WRITE) -3069 -f20 $(TARGET).mot $(H8WRITE_SERDEV)
 
 clean :
-		rm -f $(OBJS) $(TARGET) $(TARGET).elf $(TARGET).mot
+		rm -f $(OBJS) $(TARGET) $(TARGET).coff $(TARGET).mot
