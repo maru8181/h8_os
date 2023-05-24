@@ -36,7 +36,7 @@ struct h8_3069f_sci {   /* HM 13.1.4 (13-4)             */
 #define H8_3069F_SCI_SCR_MPIE   (1<<3)      /* BIT 3  マルチプロセッサ割込  0: 禁止, 1: 許可 */
 #define H8_3069F_SCI_SCR_RE     (1<<4)      /* BIT 4  受信                  0: 禁止, 1: 許可 */
 #define H8_3069F_SCI_SCR_TE     (1<<5)      /* BIT 5  送信                  0: 禁止, 1: 許可 */
-#define H8_3069F_SCI_SCR_RIE    (1<<6)      /* BIT 6  受信割込要求          0: 禁止, 1: 許可 */
+#define H8_3069F_SCI_SCR_RTE    (1<<6)      /* BIT 6  受信割込要求          0: 禁止, 1: 許可 */
 #define H8_3069F_SCI_SCR_TIE    (1<<7)      /* BIT 7  僧院割込要求          0: 禁止, 1: 許可 */
 
 /* SSR: HM 13.2.7 (13-15/20) */
@@ -141,19 +141,19 @@ void serial_intr_send_disable(int index)
 int serial_intr_is_recv_enable(int index)
 {
   volatile struct h8_3069f_sci *sci = regs[index].sci;
-  return (sci->scr & H8_3069F_SCI_SCR_RIE) ? 1 : 0;
+  return (sci->scr & H8_3069F_SCI_SCR_RTE) ? 1 : 0;
 }
 
 /* 受信割込み有効化   */
 void serial_intr_recv_enable(int index)
 {
   volatile struct h8_3069f_sci *sci = regs[index].sci;
-  sci->scr |= H8_3069F_SCI_SCR_RIE;
+  sci->scr |= H8_3069F_SCI_SCR_RTE;
 }
 
 /* 受信割込み無効化   */
 void serial_intr_recv_disable(int index)
 {
   volatile struct h8_3069f_sci *sci = regs[index].sci;
-  sci->scr &= ~H8_3069F_SCI_SCR_RIE;
+  sci->scr &= ~H8_3069F_SCI_SCR_RTE;
 }
