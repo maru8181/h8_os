@@ -17,6 +17,9 @@ OBJCHG  = ../../tools/objchg/objchg
 OBJS    = startup.o main.o interrupt.o
 OBJS   += lib.o serial.o
 
+# sources of kozos
+OBJS	+= kozos.o syscall.o test08_1.o
+
 TARGET  = kozos
 
 CFLAGS  = -Wall -mh -nostdinc -nostdlib -fno-builtin
